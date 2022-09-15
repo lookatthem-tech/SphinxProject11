@@ -13,6 +13,8 @@ Facts database <https://world.openfoodfacts.org/>`_ and offers a *simple* and
 
 This is more text from RR.
 
+And some Thursday text from RR.
+
 Check out the :doc:`usage` section for further information, including how to
 :ref:`install <installation>` the project.
 
