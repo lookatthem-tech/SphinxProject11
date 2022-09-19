@@ -1,0 +1,546 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Configuring Communications with SMS" href="03SMSIntegrationTwilioUG.html" />
+
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
+        <title>Broadcast Messaging - RR Sphinx Site 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">RR Sphinx Site 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">RR Sphinx Site 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ErrorLoggingPrysm.html">Error Logging in Prysm for Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01SMSIntegrationTwilioUG.html">SMS Integration with Twilio Marketplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02SMSIntegrationTwilioUG.html">Requirements and Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03SMSIntegrationTwilioUG.html">Configuring Communications with SMS</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Broadcast Messaging</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="broadcast-messaging">
+<h1>Broadcast Messaging<a class="headerlink" href="#broadcast-messaging" title="Permalink to this heading">#</a></h1>
+<p>Broadcast messaging is a form of communication that allows
+administrators and managers to send messages to employees en masse.
+While this form of communication is intended for multiple recipients, it
+can also be used to send messages to single recipients. Templates can be
+defined and applied to make creating and managing communications easier.</p>
+<p>If you have enabled and are using Broadcast Messaging, there are options
+to send these communications via SMS.</p>
+<div class="tip docutils container">
+<p>Broadcast Messaging is enabled within the <strong>Mail Settings</strong> widget on
+the <strong>Company Info</strong> tab under Administration &gt; HCM Setup
+&gt;<strong>Company Settings &gt; Global Setup &gt; Company Setup</strong>.</p>
+</div>
+<section id="broadcast-messaging-templates">
+<h2>Broadcast Messaging Templates<a class="headerlink" href="#broadcast-messaging-templates" title="Permalink to this heading">#</a></h2>
+<p>Within the templates, messages can be defined in the SMS Message text
+box. SMS messages are limited to 1400 characters and if copying messages
+from the Email/Mailbox area, the formatting will not be retained in the
+SMS Message area.</p>
+<p>An iCalendar attachment and appointment can be defined and is supported
+for SMS messages.</p>
+</section>
+<section id="broadcast-messaging-security-permissions">
+<h2>Broadcast Messaging: Security Permissions<a class="headerlink" href="#broadcast-messaging-security-permissions" title="Permalink to this heading">#</a></h2>
+<p>You can restrict certain users or security profiles from being able to
+create or send Broadcast Messages. A security item titled <strong>Send
+Broadcast Communication</strong> is located on the HR Tab, in the Employee
+Related Functions widget of the security profiles.</p>
+<p>If this security item is enabled, the user has the <strong>Communicate</strong>
+button displayed as an option on the Employee Information screen and any
+other applicable screens. If this item is disabled, the user does not
+have the <strong>Communicate</strong> button as an option.</p>
+</section>
+<section id="company-setup-sms-opt-in-procedure">
+<h2>Company Setup SMS Opt In Procedure<a class="headerlink" href="#company-setup-sms-opt-in-procedure" title="Permalink to this heading">#</a></h2>
+<p>Companies with SMS Integration with Twilio already enabled must have
+record of employees opting in to receive notifications via SMS to be
+compliant with the Telephone Consumer Protection Act (TCPA) opt-in
+regulations. An option in the <strong>Mail Settings</strong> section allows existing
+companies with Twilio Integration enabled to become compliant.</p>
+<p>The checkbox, <strong>TCPA Opt-In Compliance Notification</strong>, can be enabled
+under <strong>Global Setup &gt; Company Setup &gt; Company Info</strong> tab, in the <strong>Mail
+Settings</strong> section. For companies that already have the Twilio
+Marketplace Product added, the checkbox is unchecked. When checked, a
+pop-up notification provides the following text:</p>
+<div class="code docutils container">
+<p>Are you sure you want enable this feature? Upon enablement of this
+feature, all employees and applicants will be opted-out of their
+current SMS delivery method preferences, giving users the opportunity
+to complete proper opt-in procedures.</p>
+</div>
+<p>When the feature is enabled, the company does not have an option to
+disable it. After the feature is enabled, all users are opted out. An
+<strong>Announcement: Opt-In to SMS Notifications</strong> pop-up is shown upon the
+next login for each employee, including new accounts. The pop-up
+explains:</p>
+<div class="code docutils container">
+<p>You are currently opted-out of SMS notifications. Please navigate to
+your [notification preferences] screen to opt-in.</p>
+</div>
+</section>
+<section id="sms-opt-in-procedure-for-new-companies">
+<h2>SMS Opt In Procedure for New Companies<a class="headerlink" href="#sms-opt-in-procedure-for-new-companies" title="Permalink to this heading">#</a></h2>
+<p>Companies using SMS to communicate to their employees need to gather
+consent from each employee to send them text messages. When SMS is
+enabled on a Company Account via Twilio integration, all employee
+accounts including applicants and future hires default to SMS disabled
+until the employees OPT IN to receive text messages in their
+Notification Preferences.</p>
+</section>
+<section id="notification-burst-when-tcpa-is-enabled">
+<h2>Notification Burst When TCPA is Enabled<a class="headerlink" href="#notification-burst-when-tcpa-is-enabled" title="Permalink to this heading">#</a></h2>
+<p>When the <strong>TCPA Opt-In Compliance Notification</strong> checkbox is enabled in
+the Company Setup, all existing applicants are opted out of the SMS
+notification preference. To ensure applicants are aware that they are
+opted out and to provide them with steps to opt-in, a notification is
+sent automatically when the TCPA option is enabled. Applicants receive a
+notification via email when:</p>
+<ul class="simple">
+<li><p>The company has enabled the TCPA checkbox in the Company Setup.</p></li>
+<li><p>The applicant had SMS checked in his/her/their notification
+preference and is now opted-out.</p></li>
+</ul>
+<p>The automatic notification that is triggered when the <strong>TCPA Opt-In
+Compliance Notification</strong> option is selected, <strong>Applicant SMS Opt-out</strong>,
+is enabled by default (Administration &gt; HCM Setup &gt;<strong>Company Settings
+&gt; Global &gt; Notifications</strong>), and can be cloned or deleted.</p>
+<div class="note docutils container">
+<p>TCPA Opt-In Compliance is not supported for demo company snapshots.
+If a snapshot of a demo company is created before the Opt In
+procedure is in place, and the company decides to reload the snapshot
+after the procedure is set up, the <strong>TCPA Opt-In Compliance</strong>
+checkbox and user SMS preferences remain unchanged.</p>
+</div>
+<div class="important docutils container">
+<p>When Administrators create a new company using Company Copy or Remote
+Company Copy, the users’ SMS notification preferences are not copied
+to the new company. This prevents a scenario where a user is Opted In
+by default when a new company is created using a Company Copy.</p>
+</div>
+</section>
+<section id="individual-user-opt-in-for-sms-delivery-method">
+<h2>Individual User Opt-In for SMS Delivery Method<a class="headerlink" href="#individual-user-opt-in-for-sms-delivery-method" title="Permalink to this heading">#</a></h2>
+<p>Companies using SMS to communicate with their employees need employees
+to consent to receiving SMS to be compliant with TCPA regulations. Each
+employee can OPT IN to receive notifications through the SMS delivery
+method. If a user wishes to receive notifications via the SMS delivery
+method, the user can navigate to the <strong>Notification Preferences</strong> screen
+and opt-in by enabling the <strong>SMS</strong> Delivery Method checkbox (<strong>My
+Information &gt; My Information &gt; Notification Preferences</strong>).</p>
+<p>If a user has not already opted-in and the user does not have a cell
+phone or country code added to their profile, the <strong>SMS</strong> checkbox
+appears unchecked. The user has the option to add their cell phone, and
+a message displays stating <strong>To make SMS available, edit your personal
+information to add your cell phone and country code</strong>. The message
+includes a link to the employee’s personal information.</p>
+<p>If the employee has Edit permissions for the <strong>ESS Cell Phone</strong> security
+item in their assigned security profile, they can opt in by enabling the
+<strong>SMS</strong> Delivery Method checkbox. If the employee does not have Edit
+permissions, the system checks if the company has at least one HR Action
+configured that includes a <strong>Cell Phone</strong> action item. If the company
+does, the system confirms that the employee has initiate permissions for
+at least one HR Action with the <strong>Cell Phone</strong> action item. If so, the
+employee is directed to <strong>My HR &gt; HR Actions</strong> to submit a request to
+add the cell phone.</p>
+<div class="warning docutils container">
+<p>Phone numbers must be entered as the full numeric phone number
+without any special characters (no dashes or parentheses) or spaces.
+For example, +1 5552345678.</p>
+</div>
+<p>When the user has a cell phone added to their profile, the <strong>SMS</strong>
+checkbox becomes editable.</p>
+<p><strong>Reminder</strong>: When a company enables SMS, all employees within the
+company default to SMS disabled. Users must navigate to their
+<strong>Notification Preferences</strong> page to OPT IN to receiving notifications
+via the SMS delivery method.</p>
+<p>As part of the Opt In procedure, each user is sent a six digit
+confirmation code that must be entered back into the application. Users
+can then enter the code into the input boxes in the <strong>Verify Your Phone
+Number</strong> dialog box.</p>
+</section>
+<section id="sms-opt-in-for-applicants">
+<h2>SMS Opt In for Applicants<a class="headerlink" href="#sms-opt-in-for-applicants" title="Permalink to this heading">#</a></h2>
+<p>Applicants can consent to receiving SMS notifications to ensure
+compliance with TCPA regulations. Each applicant can Opt In to receive
+notifications via the SMS Delivery Method. When the <strong>TCPA Opt-In
+Compliance Notification</strong> option is enabled, users see an enabled
+<strong>SMS</strong> checkbox when the proper permissions are configured for the
+applicant and the cell phone/country code are available.</p>
+<p>The message under the SMS checkbox in Notification Preferences reads:
+<strong>To make SMS available, edit your applicant profile to add your cell
+phone and country code</strong>. The words “applicant profile” in the message
+are a link, and clicking on it takes the applicant to the My Applicant
+Profile page where, if necessary, they can edit the profile to add the
+cell phone details.</p>
+<div class="warning docutils container">
+<p>Phone numbers must be entered as the full numeric phone number
+without any special characters (no dashes or parentheses) or spaces.
+For example, +1 5552345678.</p>
+</div>
+<p>Users can select the <strong>SMS</strong> checkbox if needed. When they do, a pop-up
+for <strong>Verify Your Phone Number</strong> opens. Choosing <strong>Send Code</strong> generates
+a message that says <strong>Sending Code</strong>. If the user closes the pop-up
+before the code is successfully verified, then the <strong>SMS</strong> checkbox
+remains unchecked. If the phone is successfully verified, the <strong>SMS</strong>
+checkbox is enabled.</p>
+<section id="sms-opt-in-via-quick-apply-or-apply-with-seek">
+<h3>SMS Opt-In Via Quick Apply or Apply with Seek<a class="headerlink" href="#sms-opt-in-via-quick-apply-or-apply-with-seek" title="Permalink to this heading">#</a></h3>
+<p>Where the <strong>TCPA Opt-In Compliance Notification</strong> is enabled, applicants
+can Opt In to SMS notifications when using the Quick Apply or Apply with
+Seek features. Applicants applying for a job using Quick Apply or Apply
+with Seek can click on <strong>Apply</strong> after entering all valid details and
+questionnaires (no errors exist). When the job application is submitted
+successfully, the Completed message displays. When the applicant clicks
+<strong>OK</strong> on the Completed message, a pop-up displays and asks:</p>
+<div class="code docutils container">
+<p>Notify you of update via text messages (SMS)?</p>
+</div>
+<p>Another pop-up then allows the applicant to verify their phone number.
+Once the number is verified, the applicant can choose the <strong>Send Code</strong>
+option. An error message displays if the code was not sent, and a
+success message displays when the code is sent successfully. Once it is
+received, the applicant can enter the code and click the <strong>Verify</strong>
+option to complete the Opt In process.</p>
+</section>
+</section>
+<section id="sms-delivery-preferences-report">
+<h2>SMS Delivery Preferences Report<a class="headerlink" href="#sms-delivery-preferences-report" title="Permalink to this heading">#</a></h2>
+<p>A <strong>SMS Delivery Preferences</strong> report captures Opt-In/Opt-Out activity
+for all account types and is available in both Admin companies and
+Client companies. This allows companies to see the status of SMS opt-ins
+and opt-outs, perhaps for the purpose of tracking that SMS messages were
+sent during opt-in periods.</p>
+<p>This report allows companies to verify that they gathered the proper
+consent to send out SMS notifications to their applicants and employees.
+This report was previously available for Partner Resellers and is
+available for customers via the paths below.</p>
+<ul class="simple">
+<li><p>Partner Resellers: <strong>Reports &gt; Marketplace Reports &gt; Twilio &gt; SMS
+Delivery Preferences</strong></p></li>
+<li><p>Customers: <strong>My Reports &gt; Marketplace Reports &gt; Twilio &gt; SMS Delivery
+Preferences</strong></p></li>
+</ul>
+<p><strong>Security</strong>: A <strong>SMS Delivery Preferences</strong> security item, located in
+the security profiles under <strong>Reports &gt; Marketplace Reports</strong>, is
+available to enable for the appropriate users. When this item is enabled
+for the security profile assigned to a user, the report becomes
+available in the menus.</p>
+<div class="important docutils container">
+<p>This report only captures Opt In/Opt Out behavior moving forward from
+when the report is made available. Past Opt In/Opt Out data is not
+captured in the report.</p>
+</div>
+</section>
+<section id="assigning-broadcast-messages-to-employees">
+<h2>Assigning Broadcast Messages to Employees<a class="headerlink" href="#assigning-broadcast-messages-to-employees" title="Permalink to this heading">#</a></h2>
+<p>Assigning employees to a Broadcast Message is done from the Employee
+Information report page. Select one or multiple employees and then
+select the <strong>Communicate</strong> button.</p>
+<p>On the pop-up, you can manually create an SMS message and system tags
+are available. If you have created templates, this is where you apply
+them. Once a template is selected and applied, you will still have the
+option to edit the text or enable/disable communication methods and also
+enable the iCalendar attachment.</p>
+<p>When enabling a calendar appointment, you must set the When/From/To
+parameters for the appointment.</p>
+<p>When sending out a Broadcast Message to employees, the option to specify
+when to send (Date and Time) the message is available in the Schedule
+section.</p>
+<p>When ready, select the <strong>Send</strong> button and the SMS message will go out
+to the recipient(s).</p>
+</section>
+<section id="system-generated-sms-report">
+<h2>System Generated SMS Report<a class="headerlink" href="#system-generated-sms-report" title="Permalink to this heading">#</a></h2>
+<p>Users with the appropriate security settings can view the history of
+outgoing SMS communications within their company to allow for proper
+accounting. The System Generated SMS report is available under <strong>My
+Information &gt; My Reports &gt; Marketplace Reports &gt; Twilio &gt; System
+Generated SMS</strong>.</p>
+<p>This report is only visible if the <strong>SMS Integration with
+Twilio</strong> <strong>Marketplace</strong> app is added to the company. In addition, users
+must have the <strong>System Generated SMS Report</strong> security item enabled in
+the <strong>Marketplace Reports</strong> section on the <strong>Reports</strong> tab in their
+assigned Security Profile.</p>
+</section>
+<section id="user-generated-sms-report">
+<h2>User Generated SMS Report<a class="headerlink" href="#user-generated-sms-report" title="Permalink to this heading">#</a></h2>
+<p>Users can view the history of responses to SMS Communications within
+their company for proper accounting using the User Generated SMS report
+under <strong>My Information &gt; My Reports &gt; Marketplace Reports &gt; Twilio &gt;
+User Generated SMS Report</strong>.</p>
+<p>This report is only visible if the SMS Integration with
+Twilio Marketplace item is added to the company. In addition, users must
+have the <strong>User Generated SMS Report</strong> security item enabled in the
+<strong>Marketplace Reports</strong> section on the <strong>Reports</strong> tab of their assigned
+Security Profile to access this report.</p>
+</section>
+<section id="partner-resellers-only-system-generated-sms-report">
+<h2>Partner Resellers Only: System Generated SMS Report<a class="headerlink" href="#partner-resellers-only-system-generated-sms-report" title="Permalink to this heading">#</a></h2>
+<p>In the System Generated Emails report, a new default column titled
+<strong>Event Type</strong> has been added that will display the specific type of
+method used for the message (for example: Broadcast, HR Action Request,
+etc.).</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="03SMSIntegrationTwilioUG.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Configuring Communications with SMS</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Broadcast Messaging</a><ul>
+<li><a class="reference internal" href="#broadcast-messaging-templates">Broadcast Messaging Templates</a></li>
+<li><a class="reference internal" href="#broadcast-messaging-security-permissions">Broadcast Messaging: Security Permissions</a></li>
+<li><a class="reference internal" href="#company-setup-sms-opt-in-procedure">Company Setup SMS Opt In Procedure</a></li>
+<li><a class="reference internal" href="#sms-opt-in-procedure-for-new-companies">SMS Opt In Procedure for New Companies</a></li>
+<li><a class="reference internal" href="#notification-burst-when-tcpa-is-enabled">Notification Burst When TCPA is Enabled</a></li>
+<li><a class="reference internal" href="#individual-user-opt-in-for-sms-delivery-method">Individual User Opt-In for SMS Delivery Method</a></li>
+<li><a class="reference internal" href="#sms-opt-in-for-applicants">SMS Opt In for Applicants</a><ul>
+<li><a class="reference internal" href="#sms-opt-in-via-quick-apply-or-apply-with-seek">SMS Opt-In Via Quick Apply or Apply with Seek</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sms-delivery-preferences-report">SMS Delivery Preferences Report</a></li>
+<li><a class="reference internal" href="#assigning-broadcast-messages-to-employees">Assigning Broadcast Messages to Employees</a></li>
+<li><a class="reference internal" href="#system-generated-sms-report">System Generated SMS Report</a></li>
+<li><a class="reference internal" href="#user-generated-sms-report">User Generated SMS Report</a></li>
+<li><a class="reference internal" href="#partner-resellers-only-system-generated-sms-report">Partner Resellers Only: System Generated SMS Report</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

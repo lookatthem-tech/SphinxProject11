@@ -6,9 +6,8 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Lumache'
-copyright = '2022, Graziella'
-author = 'Graziella'
+project = 'RR Sphinx Site'
+author = 'RR'
 release = '0.1'
 
 # -- General configuration ---------------------------------------------------
