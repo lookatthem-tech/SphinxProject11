@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Error Logging in Prysm for Desktop" href="ErrorLoggingPrysm.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Configuring Communications with SMS" href="03SMSIntegrationTwilioUG.html" /><link rel="prev" title="SMS Integration with Twilio Marketplace" href="01SMSIntegrationTwilioUG.html" />
 
     <meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>RR Sphinx Site 0.1 documentation</title>
+        <title>Requirements and Prerequisites - RR Sphinx Site 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">RR Sphinx Site 0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">RR Sphinx Site 0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   <span class="sidebar-brand-text">RR Sphinx Site 0.1 documentation</span>
@@ -154,10 +154,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ErrorLoggingPrysm.html">Error Logging in Prysm for Desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01SMSIntegrationTwilioUG.html">SMS Integration with Twilio Marketplace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02SMSIntegrationTwilioUG.html">Requirements and Prerequisites</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Requirements and Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03SMSIntegrationTwilioUG.html">Configuring Communications with SMS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04SMSIntegrationTwilioUG.html">Broadcast Messaging</a></li>
 </ul>
@@ -193,70 +193,83 @@
           </label>
         </div>
         <article role="main">
-          <section id="welcome-to-rr-s-sphinx-project">
-<h1>Welcome to RR’s Sphinx Project!<a class="headerlink" href="#welcome-to-rr-s-sphinx-project" title="Permalink to this heading">#</a></h1>
-<p>This is a sphinx project that I created. To give it some content, I brought in some developer docs from my past projects.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This project is under active development.</p>
+          <section id="requirements-and-prerequisites">
+<h1>Requirements and Prerequisites<a class="headerlink" href="#requirements-and-prerequisites" title="Permalink to this heading">#</a></h1>
+<p>To take advantage of SMS functionality, you must complete a few steps
+prior to using it. First, you must add the <strong>SMS Integration with
+Twilio</strong> marketplace product. Once added, there are a few housekeeping
+steps to complete in your company. Once that is done you will then be
+able to select SMS options within company notifications.</p>
+<section id="download-the-marketplace-product">
+<h2>Download the Marketplace Product<a class="headerlink" href="#download-the-marketplace-product" title="Permalink to this heading">#</a></h2>
+<p>To add the marketplace product, navigate to <strong>Marketplace &gt; Marketplace
+Setup</strong> and add the <strong>SMS Integration with Twilio</strong> marketplace product
+to the company.</p>
+<div class="note docutils container">
+<p>The marketplace product contains links and information to Twilio. You
+must create a Twilio account and gather information from them before
+you can complete the final installation of the product.</p>
 </div>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ErrorLoggingPrysm.html">Error Logging in Prysm for Desktop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ErrorLoggingPrysm.html#opening-log-files">Opening Log Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ErrorLoggingPrysm.html#configuring-logging">Configuring Logging</a></li>
+<ul class="simple">
+<li><p>From the <strong>Home</strong> or <strong>Search/Browse</strong> tab, locate and click the
+<strong>SMS Integration with Twilio</strong> product hyperlink.</p></li>
+<li><p>Click <strong>Add To Company</strong>. You will be prompted to sign the <strong>Terms
+And Conditions</strong> page.</p></li>
+<li><p>After signing the <strong>Terms And Conditions</strong>, select a security profile
+for the users who will manage this product. This is typically the
+Company Administrator.</p></li>
+<li><p>After clicking <strong>OK</strong>, the system will process for a bit and when
+finished, a <strong>Success</strong> message will display.</p></li>
+<li><p>You can verify the installation on the <strong>Installed</strong> tab.</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="01SMSIntegrationTwilioUG.html">SMS Integration with Twilio Marketplace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02SMSIntegrationTwilioUG.html">Requirements and Prerequisites</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="02SMSIntegrationTwilioUG.html#download-the-marketplace-product">Download the Marketplace Product</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="02SMSIntegrationTwilioUG.html#global-setup">Global Setup</a></li>
+<p>After you’ve created your Twilio account, the next step is to edit the
+marketplace product settings and add your Twilio information.</p>
+<ul class="simple">
+<li><p>Under the <strong>Installed</strong> tab, click the edit icon for the product.</p></li>
+<li><p>Input the Twilio <strong>Account SID</strong>, <strong>Authentication Token</strong>, and
+<strong>Messaging Service SID</strong> into the appropriate fields.</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="03SMSIntegrationTwilioUG.html">Configuring Communications with SMS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#sms-in-notifications">SMS in Notifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#sms-in-workflows">SMS in Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#two-way-sms-in-workflows">Two-Way SMS in Workflows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#two-way-sms-workflows-required-comment">Two-Way SMS Workflows: Required Comment</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#sms-in-recruitment">SMS in Recruitment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#communication-templates">Communication Templates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#communications-with-applicants">Communications with Applicants</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#applicants-and-job-applications">Applicants and Job Applications</a></li>
-<li class="toctree-l4"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#job-requisitions-and-applicant-information">Job Requisitions and Applicant Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#twilio-country-code-in-applicant-profile-applicant-information">Twilio: Country Code in Applicant Profile, Applicant Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="03SMSIntegrationTwilioUG.html#twilio-announcement-for-sms-opt-in">Twilio: Announcement For SMS Opt-In</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="04SMSIntegrationTwilioUG.html">Broadcast Messaging</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#broadcast-messaging-templates">Broadcast Messaging Templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#broadcast-messaging-security-permissions">Broadcast Messaging: Security Permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#company-setup-sms-opt-in-procedure">Company Setup SMS Opt In Procedure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#sms-opt-in-procedure-for-new-companies">SMS Opt In Procedure for New Companies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#notification-burst-when-tcpa-is-enabled">Notification Burst When TCPA is Enabled</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#individual-user-opt-in-for-sms-delivery-method">Individual User Opt-In for SMS Delivery Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#sms-opt-in-for-applicants">SMS Opt In for Applicants</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#sms-opt-in-via-quick-apply-or-apply-with-seek">SMS Opt-In Via Quick Apply or Apply with Seek</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#sms-delivery-preferences-report">SMS Delivery Preferences Report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#assigning-broadcast-messages-to-employees">Assigning Broadcast Messages to Employees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#system-generated-sms-report">System Generated SMS Report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#user-generated-sms-report">User Generated SMS Report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04SMSIntegrationTwilioUG.html#partner-resellers-only-system-generated-sms-report">Partner Resellers Only: System Generated SMS Report</a></li>
-</ul>
-</li>
-</ul>
+<section id="global-setup">
+<h3>Global Setup<a class="headerlink" href="#global-setup" title="Permalink to this heading">#</a></h3>
+<p>Once your marketplace product is installed and completed, you will then
+need to edit a few settings in your company.</p>
+<p>Enable SMS notifications globally. Multiple options are available. After
+selecting an option here, SMS fields will then become available in the
+application. Skipping this step will result in no SMS settings being
+available. Optionally, you can configure a custom SMS Header that will
+be appended to the front of each SMS notification.</p>
+<p>Navigate to the <strong>Company Configuration</strong> widget under the <strong>Company
+Info</strong> tab, located underAdministration &gt; HCM Setup &gt; <strong>Company Settings
+&gt; Global Setup &gt; Company Setup</strong>, and select an SMS option in the
+<strong>Notifications Through</strong> field.</p>
+<p><strong>SMS</strong>: Will use only SMS messaging.</p>
+<p><strong>SMS &amp; Email</strong>: Will use SMS messaging and allow the email option as
+well.</p>
+<p><strong>SMS &amp; Mailbox</strong>: Will use SMS messaging and allow the user’s mailbox
+to receive messages.</p>
+<p><strong>Email &amp; Mailbox &amp; SMS</strong>: Will use SMS messaging, user mailboxes, and
+email.</p>
+<p><strong>SMS Header:</strong> In this field, you can optionally type a customized
+header that will be appended to the front of each SMS message sent from
+the system. For example, you may want to alert recipients who the alert
+is coming from by entering your company name in this field, i.e.,
+OURCOMPANY: rest of header.</p>
+<p>Employees can enable/disable SMS in notification preferences. End users
+will be able to toggle their own SMS notification preferences under <strong>My
+Information</strong> &gt; <strong>My Information &gt; Notification Preferences</strong>.</p>
+<p>Broadcast Messaging can be turned off by unchecking the related boxes
+for Broadcast Email, Broadcast Mailbox, and Broadcast Message SMS.
+Unchecking these has no effect on the options under them for Primary
+Email, Mailbox, and SMS. If Primary Email, Mailbox or SMS are disabled,
+the corresponding Broadcast Messaging option is disabled as well.</p>
+<div class="note docutils container">
+<p>To comply with Twilio and industry standards, end users will be able
+to reply with STOP, CANCEL, etc. to any SMS notification. If they do,
+notification preferences will be updated in the application to
+disable SMS. Notification preference changes can be audited in the
+Account Audit Trail report as well.</p>
 </div>
+</section>
 </section>
 </section>
 
@@ -265,16 +278,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="ErrorLoggingPrysm.html">
+          <a class="next-page" href="03SMSIntegrationTwilioUG.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Error Logging in Prysm for Desktop</div>
+                <div class="title">Configuring Communications with SMS</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="01SMSIntegrationTwilioUG.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">SMS Integration with Twilio Marketplace</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -307,8 +330,11 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Welcome to RR’s Sphinx Project!</a><ul>
-<li><a class="reference internal" href="#contents">Contents</a></li>
+<li><a class="reference internal" href="#">Requirements and Prerequisites</a><ul>
+<li><a class="reference internal" href="#download-the-marketplace-product">Download the Marketplace Product</a><ul>
+<li><a class="reference internal" href="#global-setup">Global Setup</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
